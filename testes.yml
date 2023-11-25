@@ -1,0 +1,41 @@
+name: Testes
+
+on: [push, pull_request]
+
+jobs:
+  branch1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Instalar Dependências
+      run: pip install -r requirements.txt
+
+    - name: Testar Branch 1
+      run: python hashlibebe.py
+
+  branch2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Instalar Dependências
+      run: pip install -r requirements.txt
+
+    - name: Instalar pytest
+      run: pip install pytest
+
+    - name: Testar Branch 2
+      run: pytest hashlibebe2.py
